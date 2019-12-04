@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  etl:
+    build:
+      context: .
+    image: patagoniansys/pentaho-data-integration:local
+    environment:
+      # No spaces
+      JOB_KEY: etl_example
+      # Job file, relative to /etl
+      JOB_FILE: /etl/transformation_example/etl.kjb
+    volumes:
+      # Mount transformation project at /etl
+      - ./transformation_example:/etl/transformation_example
